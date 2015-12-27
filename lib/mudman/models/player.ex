@@ -9,9 +9,11 @@ defmodule Mudman.Player do
     field :health,      :integer
     field :base_attack, :integer
     field :base_magic,  :integer
+
+    has_many :items, Mudman.Item
   end
 
-  @required_fields ~w(username level health base_atk base_mgk)
+  @required_fields ~w(username level health base_attack base_magic)
   @optional_fields ~w()
 
   def changeset(model, params \\ :empty) do

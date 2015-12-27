@@ -12,6 +12,8 @@ defmodule Mudman.Item do
     field :attack_damage, :integer, default: 0
     field :magic_damage,  :integer, default: 0
     field :charges,       :integer, default: 0
+
+    belongs_to :player, Mudman.Player
   end
 
   @required_fields ~w(ident name description)
