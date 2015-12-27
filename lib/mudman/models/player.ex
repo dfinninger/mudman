@@ -20,6 +20,7 @@ defmodule Mudman.Player do
     model
     |> cast(params, @required_fields, @optional_fields)
     |> validate_length(:username, max: 64)
+    |> unique_constraint(:username)
     |> validate_inclusion(:level, 1..Application.get_env(:mudman, :max_player_level))
     |> validate_number(:health, greater_than: 0)
     |> validate_number(:base_attack, greater_than: 0)
