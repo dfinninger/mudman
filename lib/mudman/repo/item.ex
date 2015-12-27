@@ -1,8 +1,8 @@
-defmodule Mudman.InventoryItem do
-  use Ecto.Schema
-  import Ecto.Changeset
+defmodule Mudman.Item do
+  use     Ecto.Schema
+  import  Ecto.Changeset
 
-  schema "inventory_item" do
+  schema "items" do
     field :ident,       :integer
     field :name,        :string
     field :description, :string
