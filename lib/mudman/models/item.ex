@@ -24,8 +24,8 @@ defmodule Mudman.Item do
     |> cast(params, @required_fields, @optional_fields)
     |> validate_inclusion(:level, 1..Application.get_env(:mudman, :max_player_level))
     |> validate_inclusion(:durability, 0..100)
-    |> validate_number(:attack_damage, greater_than: 0)
-    |> validate_number(:magic_damage, greater_than: 0)
-    |> validate_number(:charges, greater_than: 0)
+    |> validate_number(:attack_damage, greater_than_or_equal_to: 0)
+    |> validate_number(:magic_damage, greater_than_or_equal_to: 0)
+    |> validate_number(:charges, greater_than_or_equal_to: 0)
   end
 end
