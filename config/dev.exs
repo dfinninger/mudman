@@ -1,3 +1,5 @@
+use Mix.Config
+
 config :mudman, Mudman.Repo,
   adapter: Ecto.Adapters.Postgres,
   database: "mudman_repo",
