@@ -19,7 +19,7 @@ defmodule Mudman.Player do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
-    |> validate_length(:username, max: 64)
+    |> validate_length(:username, max: Application.get_env(:mudman, :username_max_length))
     |> unique_constraint(:username)
     |> validate_inclusion(:level, 1..Application.get_env(:mudman, :max_player_level))
     |> validate_number(:health, greater_than: 0)
