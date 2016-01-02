@@ -22,8 +22,8 @@ defmodule Mudman.Player do
     |> validate_length(:username, max: Application.get_env(:mudman, :username_max_length))
     |> unique_constraint(:username)
     |> validate_inclusion(:level, 1..Application.get_env(:mudman, :max_player_level))
-    |> validate_number(:health, greater_than: 0)
-    |> validate_number(:base_attack, greater_than: 0)
-    |> validate_number(:base_magick, greater_than: 0)
+    |> validate_number(:health, greater_than_or_equal_to: 0)
+    |> validate_number(:base_attack, greater_than_or_equal_to: 0)
+    |> validate_number(:base_magic, greater_than_or_equal_to: 0)
   end
 end

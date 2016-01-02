@@ -14,4 +14,60 @@ defmodule PlayerTest do
     })
     refute changeset.valid?
   end
+
+  test "changeset is invalid if player level too high" do
+    changeset = Player.changeset(%Player{}, %{
+      username: "testuser",
+      level: (Application.get_env(:mudman, :max_player_level) + 1),
+      health: 1,
+      base_attack: 1,
+      base_magic: 1
+    })
+    refute changeset.valid?
+  end
+
+  test "changeset is invalid if player level too low" do
+    changeset = Player.changeset(%Player{}, %{
+      username: "testuser",
+      level: 0,
+      health: 1,
+      base_attack: 1,
+      base_magic: 1
+    })
+    refute changeset.valid?
+  end
+
+  test "changeset is invalid if health too low" do
+    changeset = Player.changeset(%Player{}, %{
+      username: "testuser",
+      level: 1,
+      health: -1,
+      base_attack: 1,
+      base_magic: 1
+    })
+    refute changeset.valid?
+  end
+
+  test "changeset is invalid if base_attack too low" do
+    changeset = Player.changeset(%Player{}, %{
+      username: "testuser",
+      level: 1,
+      health: 1,
+      base_attack: -1,
+      base_magic: 1
+    })
+    refute changeset.valid?
+  end
+
+  test "changeset is invalid if base_magic too low" do
+    changeset = Player.changeset(%Player{}, %{
+      username: "testuser",
+      level: 1,
+      health: 1,
+      base_attack: 1,
+      base_magic: -1
+    })
+    refute changeset.valid?
+  end
+
 end
